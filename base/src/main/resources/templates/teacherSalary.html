@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>工资查询</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- loading mui -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.min.css">
+	<!-- loading mui.picker.min.css -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css">
+	<!-- loading mui.poppicker.css -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.poppicker.css">
+	<!-- custorm style -->
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+	<!-- 内容 -->
+	<div class="content">
+		<section class="xueqi_new">
+			<div class="class" id="classResult">
+				请选择时间
+			</div>
+			<button id="showUserPicker" class="select" type="button">选择</button>
+		</section>
+		<!-- 查询到的结果和图片 -->
+		<div class="result_table">
+			<table>
+				<tr>
+					<th>时间</th>
+					<th>基本工资</th>
+					<th>绩效工资</th>
+					<th>加班工资</th>
+					<th>奖金</th>
+					<th>补贴</th>
+				</tr>
+				<tr>
+					<td>5月</td>
+					<td>3500</td>
+					<td>2500</td>
+					<td>500</td>
+					<td>100</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>4月</td>
+					<td>3500</td>
+					<td>2500</td>
+					<td>500</td>
+					<td>100</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>3月</td>
+					<td>3500</td>
+					<td>2500</td>
+					<td>500</td>
+					<td>100</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>2月</td>
+					<td>3500</td>
+					<td>2500</td>
+					<td>500</td>
+					<td>100</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>1月</td>
+					<td>3500</td>
+					<td>2500</td>
+					<td>500</td>
+					<td>100</td>
+					<td>100</td>
+				</tr>
+			</table>
+		</div>
+		<div class="mui-content-padded">
+				<ul class="mui-pagination">
+					<li class="mui-previous mui-disabled">
+						<a href="#">
+							«
+						</a>
+					</li>
+					<li class="mui-active">
+						<a href="#">
+							1
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							2
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							3
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							4
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							5
+						</a>
+					</li>
+					<li class="mui-next">
+						<a href="#">
+							»
+						</a>
+					</li>
+				</ul>
+			</div>
+	</div>
+	<!-- loading mui -->
+	<script type="text/javascript" src="../static/css/js/mui.min.js"></script>
+	<!-- loading picker -->
+	<script type="text/javascript" src="../static/css/js/mui.picker.min.js"></script>
+	<!-- loading popicker -->
+	<script type="text/javascript" src="../static/css/js/mui.poppicker.js"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				//普通示例
+				var userPicker = new $.PopPicker();
+				userPicker.setData([{
+					value: '000001',
+					text: '2016年'
+				}, {
+					value: '000002',
+					text: '2015年'
+				}, {
+					value: '000003',
+					text: '2014年'
+				}, {
+					value: '000004',
+					text: '2013年'
+				}, {
+					value: '000005',
+					text: '2012年'
+				}, {
+					value: '000006',
+					text: '2011年'
+				}]);
+				var showUserPickerButton = doc.getElementById('showUserPicker');
+				var classResult = doc.getElementById('classResult');
+				showUserPickerButton.addEventListener('tap', function(event) {
+					userPicker.show(function(items) {
+						classResult.innerText = items[0].text;
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);
+			});
+		})(mui, document);
+	</script>
+</body>
+</html>

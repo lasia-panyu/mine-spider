@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>课室查询</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- loading mui -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.min.css">
+	<!-- loading mui.picker.min.css -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css">
+	<!-- loading mui.poppicker.css -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.poppicker.css">
+	<!-- custorm style -->
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+		<!-- 自定义样式 -->
+	<style type="text/css">
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
+</head>
+<body>
+	<!-- 内容 -->
+	<div class="content">
+		<div class="teacherC">
+			<!-- 查询 -->
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>课室名称</label>
+					<input type="text" class="mui-input-clear select" placeholder="例如:教A501" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					<a class="select_button">查询</a>
+				</div>			
+			</form>
+		</div>
+		<!-- 查询到的结果和图片 -->
+		<div class="result">
+			<div class="result_local"><span class="ti">*</span>教室位于<span>北栋601</span></div>
+			<div>(请点击下图放大查看相应位置)</div>
+			<div class="result_img">
+				<img src="../static/css/img/local_img.jpg" data-preview-src data-preview-group="1">
+			</div>
+		</div>
+	</div>
+	<!-- loading mui.min.js -->
+	<script type="text/javascript" src="../static/css/js/mui.min.js"></script>
+	<!-- loading mui.zoom.js -->
+	<script type="text/javascript" src="../static/css/js/mui.zoom.js"></script>
+	<!-- loading mui.previewimage -->
+	<script type="text/javascript" src="../static/css/js/mui.previewimage.js"></script>
+	<script>
+		mui.previewImage();
+	</script>
+	<div id="__MUI_PREVIEWIMAGE" class="mui-slider mui-preview-image mui-fullscreen">
+		<div class="mui-preview-header">
+			<span class="mui-preview-indicator"></span>
+		</div>
+		<div class="mui-slider-group"></div>
+		<div class="mui-preview-footer mui-hidden"></div>
+		<div class="mui-preview-loading">
+			<span class="mui-spinner mui-spinner-white"></span>
+		</div>
+	</div>
+</body>
+</html>

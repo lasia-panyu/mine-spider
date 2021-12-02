@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fxyh.crewler.mapper.NewCategroyDao">
+  <resultMap id="BaseResultMap" type="fxyh.crewler.bean.NewCategroy">
+    <id column="categroy_id" jdbcType="INTEGER" property="categroyId" />
+    <result column="categroy_name" jdbcType="VARCHAR" property="categroyName" />
+    <result column="categroy_flag" jdbcType="INTEGER" property="categroyFlag" />
+    <result column="categroy_type" jdbcType="VARCHAR" property="categroyType" />
+    <result column="categroy_keyword" jdbcType="VARCHAR" property="categroyKeyword" />
+    <result column="categroy_pushflag" jdbcType="INTEGER" property="categroyPushflag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    categroy_id, categroy_name, categroy_flag, categroy_type, categroy_keyword, categroy_pushflag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from new_categroy
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from new_categroy
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="categroy_id" keyProperty="categroyId" parameterType="fxyh.crewler.bean.NewCategroy" useGeneratedKeys="true">
+    insert into new_categroy (categroy_name, categroy_flag, categroy_type, 
+      categroy_keyword, categroy_pushflag)
+    values (#{categroyName,jdbcType=VARCHAR}, #{categroyFlag,jdbcType=INTEGER}, #{categroyType,jdbcType=VARCHAR}, 
+      #{categroyKeyword,jdbcType=VARCHAR}, #{categroyPushflag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="categroy_id" keyProperty="categroyId" parameterType="fxyh.crewler.bean.NewCategroy" useGeneratedKeys="true">
+    insert into new_categroy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="categroyName != null">
+        categroy_name,
+      </if>
+      <if test="categroyFlag != null">
+        categroy_flag,
+      </if>
+      <if test="categroyType != null">
+        categroy_type,
+      </if>
+      <if test="categroyKeyword != null">
+        categroy_keyword,
+      </if>
+      <if test="categroyPushflag != null">
+        categroy_pushflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="categroyName != null">
+        #{categroyName,jdbcType=VARCHAR},
+      </if>
+      <if test="categroyFlag != null">
+        #{categroyFlag,jdbcType=INTEGER},
+      </if>
+      <if test="categroyType != null">
+        #{categroyType,jdbcType=VARCHAR},
+      </if>
+      <if test="categroyKeyword != null">
+        #{categroyKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="categroyPushflag != null">
+        #{categroyPushflag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="fxyh.crewler.bean.NewCategroy">
+    update new_categroy
+    <set>
+      <if test="categroyName != null">
+        categroy_name = #{categroyName,jdbcType=VARCHAR},
+      </if>
+      <if test="categroyFlag != null">
+        categroy_flag = #{categroyFlag,jdbcType=INTEGER},
+      </if>
+      <if test="categroyType != null">
+        categroy_type = #{categroyType,jdbcType=VARCHAR},
+      </if>
+      <if test="categroyKeyword != null">
+        categroy_keyword = #{categroyKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="categroyPushflag != null">
+        categroy_pushflag = #{categroyPushflag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="fxyh.crewler.bean.NewCategroy">
+    update new_categroy
+    set categroy_name = #{categroyName,jdbcType=VARCHAR},
+      categroy_flag = #{categroyFlag,jdbcType=INTEGER},
+      categroy_type = #{categroyType,jdbcType=VARCHAR},
+      categroy_keyword = #{categroyKeyword,jdbcType=VARCHAR},
+      categroy_pushflag = #{categroyPushflag,jdbcType=INTEGER}
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </update>
+</mapper>

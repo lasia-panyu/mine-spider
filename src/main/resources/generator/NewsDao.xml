@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.NewsDao">
+  <resultMap id="BaseResultMap" type="generate.News">
+    <id column="new_id" jdbcType="INTEGER" property="new_id" />
+    <result column="news_md5" jdbcType="VARCHAR" property="news_md5" />
+    <result column="news_desc" jdbcType="VARCHAR" property="news_desc" />
+    <result column="news_href" jdbcType="VARCHAR" property="news_href" />
+    <result column="news_name" jdbcType="VARCHAR" property="news_name" />
+    <result column="news_date" jdbcType="VARCHAR" property="news_date" />
+    <result column="news_time" jdbcType="VARCHAR" property="news_time" />
+    <result column="news_title" jdbcType="VARCHAR" property="news_title" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    new_id, news_md5, news_desc, news_href, news_name, news_date, news_time, news_title
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news
+    where new_id = #{new_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from news
+    where new_id = #{new_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="new_id" keyProperty="new_id" parameterType="generate.News" useGeneratedKeys="true">
+    insert into news (news_md5, news_desc, news_href, 
+      news_name, news_date, news_time, 
+      news_title)
+    values (#{news_md5,jdbcType=VARCHAR}, #{news_desc,jdbcType=VARCHAR}, #{news_href,jdbcType=VARCHAR}, 
+      #{news_name,jdbcType=VARCHAR}, #{news_date,jdbcType=VARCHAR}, #{news_time,jdbcType=VARCHAR}, 
+      #{news_title,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="new_id" keyProperty="new_id" parameterType="generate.News" useGeneratedKeys="true">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="news_md5 != null">
+        news_md5,
+      </if>
+      <if test="news_desc != null">
+        news_desc,
+      </if>
+      <if test="news_href != null">
+        news_href,
+      </if>
+      <if test="news_name != null">
+        news_name,
+      </if>
+      <if test="news_date != null">
+        news_date,
+      </if>
+      <if test="news_time != null">
+        news_time,
+      </if>
+      <if test="news_title != null">
+        news_title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="news_md5 != null">
+        #{news_md5,jdbcType=VARCHAR},
+      </if>
+      <if test="news_desc != null">
+        #{news_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="news_href != null">
+        #{news_href,jdbcType=VARCHAR},
+      </if>
+      <if test="news_name != null">
+        #{news_name,jdbcType=VARCHAR},
+      </if>
+      <if test="news_date != null">
+        #{news_date,jdbcType=VARCHAR},
+      </if>
+      <if test="news_time != null">
+        #{news_time,jdbcType=VARCHAR},
+      </if>
+      <if test="news_title != null">
+        #{news_title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.News">
+    update news
+    <set>
+      <if test="news_md5 != null">
+        news_md5 = #{news_md5,jdbcType=VARCHAR},
+      </if>
+      <if test="news_desc != null">
+        news_desc = #{news_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="news_href != null">
+        news_href = #{news_href,jdbcType=VARCHAR},
+      </if>
+      <if test="news_name != null">
+        news_name = #{news_name,jdbcType=VARCHAR},
+      </if>
+      <if test="news_date != null">
+        news_date = #{news_date,jdbcType=VARCHAR},
+      </if>
+      <if test="news_time != null">
+        news_time = #{news_time,jdbcType=VARCHAR},
+      </if>
+      <if test="news_title != null">
+        news_title = #{news_title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where new_id = #{new_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.News">
+    update news
+    set news_md5 = #{news_md5,jdbcType=VARCHAR},
+      news_desc = #{news_desc,jdbcType=VARCHAR},
+      news_href = #{news_href,jdbcType=VARCHAR},
+      news_name = #{news_name,jdbcType=VARCHAR},
+      news_date = #{news_date,jdbcType=VARCHAR},
+      news_time = #{news_time,jdbcType=VARCHAR},
+      news_title = #{news_title,jdbcType=VARCHAR}
+    where new_id = #{new_id,jdbcType=INTEGER}
+  </update>
+</mapper>

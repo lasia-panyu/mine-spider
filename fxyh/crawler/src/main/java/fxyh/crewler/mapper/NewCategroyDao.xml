@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fxyh.crewler.mapper.NewCategroyDao">
+  <resultMap id="BaseResultMap" type="fxyh.crewler.bean.NewCategroy">
+    <id column="categroy_id" jdbcType="INTEGER" property="categroyId" />
+    <result column="categroy_name" jdbcType="VARCHAR" property="categroyName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    categroy_id, categroy_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from new_categroy
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </select>
+  <select id="findByNewCategroyType" resultType="fxyh.crewler.bean.NewCategroy">
+
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from new_categroy
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="categroy_id" keyProperty="categroyId" parameterType="fxyh.crewler.bean.NewCategroy" useGeneratedKeys="true">
+    insert into new_categroy (categroy_name)
+    values (#{categroyName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="categroy_id" keyProperty="categroyId" parameterType="fxyh.crewler.bean.NewCategroy" useGeneratedKeys="true">
+    insert into new_categroy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="categroyName != null">
+        categroy_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="categroyName != null">
+        #{categroyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="fxyh.crewler.bean.NewCategroy">
+    update new_categroy
+    <set>
+      <if test="categroyName != null">
+        categroy_name = #{categroyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="fxyh.crewler.bean.NewCategroy">
+    update new_categroy
+    set categroy_name = #{categroyName,jdbcType=VARCHAR}
+    where categroy_id = #{categroyId,jdbcType=INTEGER}
+  </update>
+</mapper>

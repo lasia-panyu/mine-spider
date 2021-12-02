@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>历史查询记录</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- loading mui -->
+	<link rel="stylesheet" type="text/css" href="/css/mui.min.css">
+	<!-- custorm style -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<!-- 导航栏 -->
+	<!--<header id="header" class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">历史查询记录</h1>
+		<a class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left" href="javascript:history.go(-1)"><span class="mui-icon mui-icon-left-nav"></span></a>
+		<a class="mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
+	</header>-->
+
+	<!-- 主内容部分 -->
+	<div class="content">
+		<section class="rate_group">
+			<table>
+				<thead>
+				<tr>
+					<th>操作人员</th>
+					<th>时间</th>
+					<th>查询发行人名称</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="ophis:${ophisPage.getContent()}">
+					<td th:text="${ophis.newsName}"></td>
+					<td th:text="${ophis.queryName}"></td>
+					<td th:text="${ophis.queryDate}"></td>
+				</tr>
+
+
+				</tbody>
+
+			</table>
+			<div class="mui-button-row">
+				<table>
+				<tr >
+					<td ><a th:href="@{${pageNum}-1}"><button type="button" class="mui-btn mui-btn-success mui-btn-block">上一页</button></a></td>
+					<td><button type="button" class="mui-btn mui-btn-success mui-btn-block">第<span th:text="${pageNum} "/>页,共<span th:text="${ophisPage.getTotalPages()} "/>页</button></td>
+					<td ><a th:href="${session.lastPage}"><button type="button" class="mui-btn mui-btn-success mui-btn-block">下一页</button></a></td>
+				</tr>
+				</table>
+			</div>
+
+		</section>
+	</div>
+	<script src="/js/mui.min.js"></script>
+</body>
+</html>

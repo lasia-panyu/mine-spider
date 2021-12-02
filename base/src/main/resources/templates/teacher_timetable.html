@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>上课表</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- loading mui -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.min.css">
+	<!-- loading mui.picker.min -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css">
+	<!-- loading mui.popicker -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.poppicker.css">
+	<!-- custorm style -->
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+	<!-- 导航栏 -->
+	<!-- <header id="header" class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">广东省轻工职业技术学校</h1>
+		<a class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left" href="javascript:history.go(-1)"><span class="mui-icon mui-icon-left-nav"></span></a>
+		<a class="mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
+	</header> -->
+	<!-- 右上角弹出菜单 -->
+	<div id="topPopover" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a href="query.html">我要查询</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="vote.html">我要投票</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="rate.html">我要评价</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="enroll.html">我要报名</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="payment.html">我要缴费</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="personCenter.html">个人中心</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 主内容部分 -->
+	<div class="content">
+		<section class="xueqi">
+			<div class="class">
+				<label id="classResult">请选择您的班级</label>
+				<button id="showCityPicker" class="select" type="button">选择</button>
+			</div>
+		</section>
+		<section class="query">
+			<table id="timeTable">
+				<tr>
+					<th></th>
+					<th>一</th>
+					<th>二️</th>
+					<th>三</th>
+					<th>四</th>
+					<th>五</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td class="timetable-course">数学<br>@教A103</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">数学<br>@教A104</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td class="timetable-course">数学<br>@教A103</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">数学<br>@教A203</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td class="timetable-course">班会@教A703</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">数学<br>@教A103</td>
+					<td class="timetable-course"></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td class="timetable-course">数学<br>@教A103</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">数学<br>@教A103</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">数学<br>@教A103</td>
+					<td class="timetable-course"></td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">数学<br>@教403</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course">数学<br>@教A503</td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+					<td class="timetable-course"></td>
+				</tr>
+			</table>
+		</section>
+	</div>
+	
+	<div class="cover_table">
+		<div class="exit">
+			<img src="../static/css/img/exit.png" height="50" width="50">
+		</div>
+		<table>
+			<tr>
+				<th>科目</th>
+				<th>地点</th>
+			</tr>
+			<tr>
+				<td>数学</td>
+				<td>@教A503</td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- loading jquery -->
+	<script type="text/javascript" src="../static/css/js/jquery-1.12.1.min.js"></script>
+	<!-- loading mui -->
+	<script type="text/javascript" src="../static/css/js/mui.min.js"></script>
+	<!-- loading picker -->
+	<script type="text/javascript" src="../static/css/js/mui.picker.min.js"></script>
+	<!-- loading popicker -->
+	<script type="text/javascript" src="../static/css/js/mui.poppicker.js"></script>
+	<!-- loading class-data -->
+	<script type="text/javascript" src="../static/css/js/time-data.js"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				var cityPicker = new $.PopPicker({
+					layer: 3
+				});
+				cityPicker.setData(classData);
+				var showCityPickerButton = doc.getElementById('showCityPicker');
+				var cityResult = doc.getElementById('classResult');
+				showCityPickerButton.addEventListener('tap', function(event) {
+					cityPicker.show(function(items) {
+					cityResult.innerText = items[0].text + " " + items[1].text + " " + items[2].text;
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);
+			});
+		})(mui, document);
+		window.onload = function(){
+			// 便利获取表格中所有的值
+			$('.timetable-course').each(function() {
+				if ($(this).text() != '') {
+					$(this).css({"background-color":"#5cb85c", "color":"#ffffff"});
+					$(this).on('click', function(event){
+						$('.cover_table').show();
+					});
+				}
+			});
+			$('.exit').on('click', function(event) {
+				$('.cover_table').hide();
+			});
+		}
+	</script>
+</body>
+</html>

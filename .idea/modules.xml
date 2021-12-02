@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fxyh/core.iml" filepath="$PROJECT_DIR$/fxyh/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fxyh/crawler/crawler.iml" filepath="$PROJECT_DIR$/fxyh/crawler/crawler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fxyh/fxyh.iml" filepath="$PROJECT_DIR$/fxyh/fxyh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fxyh/option/option.iml" filepath="$PROJECT_DIR$/fxyh/option/option.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spider.iml" filepath="$PROJECT_DIR$/spider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fxyh/wechat/wechat.iml" filepath="$PROJECT_DIR$/fxyh/wechat/wechat.iml" />
+    </modules>
+  </component>
+</project>

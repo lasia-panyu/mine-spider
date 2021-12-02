@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>新闻查询</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- loading mui -->
+	<link rel="stylesheet" type="text/css" href="/css/mui.min.css">
+	<!-- loading mui.picker.min.css -->
+	<link rel="stylesheet" type="text/css" href="/css/mui.picker.min.css">
+	<!-- loading mui.poppicker.css -->
+	<link rel="stylesheet" type="text/css" href="/css/mui.poppicker.css">
+	<!-- custorm style -->
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<!-- 内容 -->
+	<div class="content">
+		<div class="teacherC">
+			<!-- 查询 -->
+			<form class="mui-input-group" action="1" name="form1" method="get">
+				<div class="mui-input-row" >
+					<label>持有人名称</label>
+					<input type="text"  name="content" id="content" class="mui-input-clear select" placeholder="例如:阜新银行" data-input-clear="5" th:text="${content}"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+
+					<a class="select_button"> <input type="submit" value="查询" class="select_button1"></a>
+				</div>			
+			</form>
+		</div>
+		<!-- 查询到的结果和图片 -->
+		<div class="result_table">
+			<table>
+				<tr>
+					<th>持有人名称</th>
+					<th>标题</th>
+				</tr>
+				<tr th:each="news:${newsPage.getContent()}">
+					<td th:text="${news.name}"></td>
+					<td ><a th:href="${news.href}" th:text="${news.title}" /></td>
+				</tr>
+			</table>
+		</div>
+		<div class="mui-content-padded">
+				<ul class="mui-pagination">
+					<li class="mui-previous mui-disabled">
+						<a th:href='1'>
+							«
+						</a>
+					</li>
+					<li th:each="page:${pageList}">
+						<a th:href='${page}' th:text="${page}">
+
+						</a>
+					</li>
+					<li class="mui-next">
+						<a th:href='${lastPage}'>
+							»
+						</a>
+					</li>
+				</ul>
+			</div>
+	</div>
+</body>
+</html>

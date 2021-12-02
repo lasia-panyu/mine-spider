@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>课程表</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- loading mui -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.min.css">
+	<!-- loading mui.picker.min -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.picker.min.css">
+	<!-- loading mui.popicker -->
+	<link rel="stylesheet" type="text/css" href="../static/css/mui.poppicker.css">
+	<!-- custorm style -->
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+	<!-- 主内容部分 -->
+	<div class="content">
+		<section class="xueqi_new">
+			<div class="class" id="classResult">
+				<!-- <label id="classResult"></label> -->
+				请选择专业和班级
+			</div>
+			<button id="showCityPicker" class="select" type="button">选择</button>
+		</section>
+		<section class="query">
+			<table>
+				<tr>
+					<th></th>
+					<th>一</th>
+					<th>二️</th>
+					<th>三</th>
+					<th>四</th>
+					<th>五</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td class="timetable-course">数学</td>
+					<td class="timetable-course">英语</td>
+					<td class="timetable-course">模拟电子</td>
+					<td class="timetable-course">数字电子</td>
+					<td class="timetable-course">嵌入式系统化设计与编程</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td class="timetable-course">英语</td>
+					<td class="timetable-course">语文</td>
+					<td class="timetable-course">电工基础</td>
+					<td class="timetable-course">电子技术</td>
+					<td class="timetable-course">单片机原理及实践</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td class="timetable-course">班会</td>
+					<td class="timetable-course">电子工艺</td>
+					<td class="timetable-course">汽车电子技术</td>
+					<td class="timetable-course">Android开发与实战</td>
+					<td class="timetable-course">IOS编程开发与实战</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+					<td class="timetable-course">自习</td>
+				</tr>
+			</table>
+		</section>
+	</div>
+
+	<div class="cover_table">
+		<div class="exit">
+			<img src="../static/css/img/exit.png" height="50" width="50">
+		</div>
+		<table>
+			<tr>
+				<th>科目</th>
+				<th>地点</th>
+			</tr>
+			<tr>
+				<td>数学</td>
+				<td>@教A503</td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- loading jquery -->
+	<script type="text/javascript" src="../static/css/js/jquery-1.12.1.min.js"></script>
+	<!-- loading mui -->
+	<script type="text/javascript" src="../static/css/js/mui.min.js"></script>
+	<!-- loading picker -->
+	<script type="text/javascript" src="../static/css/js/mui.picker.min.js"></script>
+	<!-- loading popicker -->
+	<script type="text/javascript" src="../static/css/js/mui.poppicker.js"></script>
+	<!-- loading class-data -->
+	<script type="text/javascript" src="../static/css/js/class-data.js"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				var cityPicker = new $.PopPicker({
+					layer: 2
+				});
+				cityPicker.setData(classData);
+				var showCityPickerButton = doc.getElementById('showCityPicker');
+				var cityResult = doc.getElementById('classResult');
+				showCityPickerButton.addEventListener('tap', function(event) {
+					cityPicker.show(function(items) {
+					cityResult.innerText = items[0].text + " " + items[1].text;
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);
+			});
+		})(mui, document);
+		window.onload = function(){
+			// 便利获取表格中所有的值
+			$('.timetable-course').each(function() {
+				$(this).on('click', function(event){
+					$('.cover_table').show();
+				});
+			});
+			$('.exit').on('click', function(event) {
+				$('.cover_table').hide();
+			});
+		}
+	</script>
+</body>
+</html>
